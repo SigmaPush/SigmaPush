@@ -4,7 +4,7 @@ class Article extends Component {
   render() {
     return (
       <div>
-        Article : { this.props.match.params.id }
+        Article : {this.props.match.params.id}
       </div>
     );
   }

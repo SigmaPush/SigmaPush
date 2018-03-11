@@ -4,7 +4,7 @@ class Reader extends Component {
   render() {
     return (
       <div>
-        Reader : { this.props.match.params.id }
+        Reader : {this.props.match.params.id}
       </div>
     );
   }

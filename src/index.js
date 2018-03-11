@@ -18,15 +18,15 @@ import reducers from './reducers';
 let store = createStore(reducers);
 
 ReactDOM.render(
-  <Provider store={ store }>
+  <Provider store={store}>
     <BrowserRouter>
       <div>
         <Switch>
-          <Route path="/search/" component={ Search } />
-          <Route path="/Article/:id" component={ Article } />
-          <Route path="/Author/:id" component={ Author } />
-          <Route path="/Reader/:id" component={ Reader } />
-          <Route path="/" component={ Home } />
+          <Route path="/search/" component={Search} />
+          <Route path="/Article/:id" component={Article} />
+          <Route path="/Author/:id" component={Author} />
+          <Route path="/Reader/:id" component={Reader} />
+          <Route path="/" component={Home} />
         </Switch>
       </div>
     </BrowserRouter>

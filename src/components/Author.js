@@ -4,7 +4,7 @@ class Author extends Component {
   render() {
     return (
       <div>
-        Author : { this.props.match.params.id }
+        Author : {this.props.match.params.id}
       </div>
     );
   }
