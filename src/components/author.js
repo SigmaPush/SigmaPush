@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Author = ({match}) => (
-    <div>
-      Author : {match.params.id}
-    </div>
-  )
-   
+class Author extends Component {
+  render() {
+    return (
+      <div>
+        Author : { this.props.match.params.id }
+      </div>
+    );
+  }
+}
+
 export default Author;

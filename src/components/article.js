@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Article = ({match}) => (
-    <div>
-      Article : {match.params.id}
-    </div>
-  )
-   
+class Article extends Component {
+  render() {
+    return (
+      <div>
+        Article : { this.props.match.params.id }
+      </div>
+    );
+  }
+}
+
 export default Article;
