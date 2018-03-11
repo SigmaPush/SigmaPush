@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const Reader = ({match}) => (
-    <div>
-      Reader : {match.params.id}
-    </div>
-  )
-   
+class Reader extends Component {
+  render() {
+    return (
+      <div>
+        Reader : { this.props.match.params.id }
+      </div>
+    );
+  }
+}
+
 export default Reader;
