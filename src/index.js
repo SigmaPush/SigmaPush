@@ -8,9 +8,10 @@ import './assets.js';
 
 import Search from './components/Search';
 import Article from './components/Article';
-import Author from './components/Author';
+import Author from './components/Author/';
 import Reader from './components/Reader';
 import Home from './components/Home';
+
 import registerServiceWorker from './registerServiceWorker';
 
 import reducers from './reducers';
