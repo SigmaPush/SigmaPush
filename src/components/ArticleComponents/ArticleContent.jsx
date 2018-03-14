@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import './ArticleComponents.css';
 
 export default class ArticleContent extends Component {
   render() {
     return (
       <div>
-        <nav id="navbar-example2" className="navbar navbar-light bg-light">
+        <nav id="content" className="navbar navbar-light bg-light">
           <a className="navbar-brand" href="#">My name is xiao fen hong</a>
           <ul className="nav nav-pills">
             <li className="nav-item">
@@ -24,7 +25,7 @@ export default class ArticleContent extends Component {
             </li>
           </ul>
         </nav>
-        <div data-spy="scroll" data-target="#navbar-example2" data-offset="0">
+        <body data-spy="scroll" data-target="#content" data-offset="0">
           <h4 id="fat">@fat</h4>
           <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. 
             Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. 
@@ -60,7 +61,7 @@ export default class ArticleContent extends Component {
             williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa 
             biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.
           </p>
-        </div>
+        </body>
       </div>
     );
   }

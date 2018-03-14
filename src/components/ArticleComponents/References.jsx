@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import './ArticleComponents.css';
 
 export default class References extends Component {
   render() {
     return (
-      <div className="border">
+      <div className="container-fluid border">
         <ul className="nav nav-tabs" id="myTab" role="tablist">
           <li className="nav-item">
             <a className="nav-link active" id="home-tab" data-toggle="tab" href="#comment" role="tab" aria-controls="comment" aria-selected="true">Comment</a>
@@ -22,7 +23,7 @@ export default class References extends Component {
           <div className="tab-pane fade" id="resource" role="tabpanel" aria-labelledby="resource-tab">
             This is something related to resources
           </div>
-          <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="reference-tab">
+          <div className="tab-pane fade" id="reference" role="tabpanel" aria-labelledby="reference-tab">
             This is something related to reference
           </div>
         </div>
