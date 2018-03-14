@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './ArticleComponents.css';
+import './Article.css';
 
 export default class References extends Component {
   render() {

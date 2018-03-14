@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import AuthorInfo from "./ArticleComponents/AuthorInfo.jsx";
-import ArticleContent from "./ArticleComponents/ArticleContent.jsx";
-import RelatedArticles from "./ArticleComponents/RelatedArticles.jsx";
-import References from "./ArticleComponents/References.jsx";
+import AuthorInfo from "./AuthorInfo.jsx";
+import ArticleContent from "./ArticleContent.jsx";
+import RelatedArticles from "./RelatedArticles.jsx";
+import References from "./References.jsx";
 class Article extends Component {
   render() {
     return (

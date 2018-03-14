@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import './ArticleComponents.css';
+import './Article.css';
+
 
 export default class ArticleContent extends Component {
   render() {
     return (
       <div>
         <nav id="content" className="navbar navbar-light bg-light">
-          <a className="navbar-brand" href="#">My name is xiao fen hong</a>
+          <a className="navbar-brand" href="">My name is xiao fen hong</a>
           <ul className="nav nav-pills">
             <li className="nav-item">
               <a className="nav-link" href="#fat">@fat</a>
@@ -15,7 +16,7 @@ export default class ArticleContent extends Component {
               <a className="nav-link" href="#mdo">@mdo</a>
             </li>
             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+              <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
               <div className="dropdown-menu">
                 <a className="dropdown-item" href="#one">one</a>
                 <a className="dropdown-item" href="#two">two</a>
