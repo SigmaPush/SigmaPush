@@ -1,0 +1,219 @@
+.grid-list {
+    position: relative;
+    margin: 0 auto 15px auto;
+    width: 100%;
+}
+.grid-list-bottom-line{
+    margin-top:10px;
+    border-bottom: 1px solid #eeeeee
+}
+@media (min-width: 662px) {
+    .grid-list-12 {
+        width: 642px;
+    }
+    .grid-list-10 {
+        width: 428px;
+    }
+}
+
+@media (min-width: 875px) {
+    .grid-list-12 {
+        width: 856px;
+    }
+    .grid-list-10 {
+        width: 642px;
+    }
+    .grid-list-9 {
+        width: 428px;
+    }
+}
+
+@media (min-width: 1090px) {
+    .grid-list-12 {
+        width: 1070px;
+    }
+    .grid-list-10 {
+        width: 856px;
+    }
+    .grid-list-9 {
+        width: 642px;
+    }
+}
+
+@media (min-width: 1300px) {
+    .grid-list-12 {
+        width: 1284px;
+    }
+    .grid-list-10 {
+        width: 1070px;
+    }
+    .grid-list-9 {
+        width: 856px;
+    }
+}
+.grid-list-mask {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.grid-list-slider .grid-list-mask {
+    padding: 0 1px 15px;
+}
+.grid-list-item-group {
+    white-space: nowrap;
+    transition: transform 0.6s ease-out;
+    height: 245px;
+}
+.grid-list-table .grid-list-item-group {
+    overflow-y: hidden;
+}
+
+.grid-list-item {
+    margin:0 0 15px 0;
+    padding-right: 6px;
+    display: inline-block;
+}
+
+.grid-list-slider .grid-list-item{
+    display: inline-block;
+}
+.grid-list-table .grid-list-item{
+    display: block;
+    float: left;
+}
+.grid-list-item-card {
+    position: relative;
+    border: none;
+    box-shadow: none;
+    display: inline-block;
+    margin: 0;
+    text-align: left;
+    vertical-align: top;
+    width: 100%;
+    height: 240px;
+}
+.grid-list-item-card:before,
+.grid-list-item-card:after
+ {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transition: .2s ease;
+    pointer-events: none;
+    will-change: opacity;
+}
+.grid-list-item-card:before {
+    box-shadow: 0 0 1px 1px rgba(20,23,28,.1), 0 3px 1px 0 rgba(20,23,28,.1);
+    opacity: 1;
+}
+.grid-list-item-card:after {
+    box-shadow: 0 2px 8px 2px rgba(20,23,28,.15);
+    opacity: 0;
+}
+.grid-list-item-card:hover:before {
+    opacity: 0;
+}
+.grid-list-item-card:hover:after {
+    opacity: 1;
+}
+.grid-list-slider-btn {
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 1px 1px rgba(20,23,28,.1), 0 3px 1px 0 rgba(20,23,28,.1);
+    color: #007791;
+    font-size: 24px;
+    height: 47px;
+    line-height: 1;
+    padding: 11px 0;
+    text-align: center;
+    bottom: 45%;
+    transform: translateY(-50%);
+    transition: .3s;
+    width: 47px;
+    z-index: 3;
+    position: absolute;
+}
+.grid-list-slider-btn:hover {
+    box-shadow: 0 2px 8px 2px rgba(20,23,28,.15);
+    color: #00576b;
+}
+.grid-list-slider-btn-next {
+    right: -15px;
+    padding-left: 2px;
+    padding-right: 0;
+}
+.grid-list-slider-btn-pre {
+    left: -15px;
+    padding-right: 2px;
+    padding-left: 0;
+}
+.grid-list-bottom-btn{
+    margin-top:10px;
+}
+.grid-list-bottom-btn:hover {
+    color: #00576b;
+    cursor: pointer;
+}
+.grid-list-item-card-info {
+    background: #fff;
+    color: #29303b;
+    height: 290px;
+    display: block;
+    font-size: small;
+    overflow: hidden;
+    position: relative
+}
+.grid-list-item-card-img {
+    display: block;
+    position: relative;
+    width: 100%;
+    height:auto;
+    overflow: hidden;
+}
+.grid-list-item-card-img img {
+    display: block;
+    position: relative;
+    height: 122px;
+    width: 100%;
+    border: 0;
+    overflow: hidden;
+    opacity: 1;
+    -webkit-filter: sepia(.1) grayscale(.1) saturate(.8);
+    filter: sepia(.1) grayscale(.1) saturate(.8);
+}
+.grid-list-item-card-body {
+    position: relative;
+    display: flex;
+    padding: 5px;
+    flex-direction: column;
+}
+.grid-list-item-card-title {
+    color: #29303b;
+    margin: 8px 0 8px;
+    max-height: 3.2rem;
+    line-height: 1.6rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+.grid-list-item-card-title > a{
+    color: #29303b;
+}
+.grid-list-item-card-author {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-height: 21px;
+    height: 21px;
+    font-size: small;
+    color: #686f7a;
+}
+.grid-list-item-card-data {
+    min-height: 21px;
+    height: 21px;
+    font-size: small;
+    color: #686f7a;
+}

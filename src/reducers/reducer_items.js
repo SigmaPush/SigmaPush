@@ -1,0 +1,81 @@
+export default function() {
+  return [
+    {
+      id:"1",
+      title : "The Ultimate MySQL Bootcamp: Go from SQL Beginner to Expert",
+      author: "Stephen Grider",
+      thumbnail:"https://udemy-images.udemy.com/course/480x270/1319066_eee6_2.jpg",
+      views:1231,
+    },
+    {
+      id:"2",
+      title : "Sales Machine: The Sales Training B2B Master Course",
+      author: "Colt Steele",
+      thumbnail:"https://udemy-images.udemy.com/course/480x270/256758_e35d_5.jpg",
+      views:1231,
+    },
+    {
+      id:"3",
+      title : "Beginner to Pro in Excel: Financial Modeling and Valuation",
+      author: "Theo McArthur",
+      thumbnail:"https://udemy-images.udemy.com/course/480x270/657932_c7e0.jpg",
+      views:1231,
+    },
+    {
+      id:"4",
+      title : "Learning Python for Data Analysis and Visualization",
+      author: "Colt Steele",
+      thumbnail:"https://udemy-images.udemy.com/course/480x270/321410_d9c5_3.jpg",
+      views:1231,
+    },
+    {
+      id:"5",
+      title : "Learn to Code by Making Games - Complete C# Unity Developer",
+      author: "Theo McArthur",
+      thumbnail:"https://udemy-images.udemy.com/course/480x270/560388_91e3_3.jpg",
+      views:1231,
+    },
+    {
+      id:"6",
+      title : "The Web Developer Bootcamp",
+      author: "Colt Steele",
+      thumbnail:"https://udemy-images.udemy.com/course/480x270/1426364_6764_2.jpg",
+      views:1231,
+    },
+    {
+      id:"7",
+      title : "Machine Learning A-Z™: Hands-On Python & R In Data Science",
+      author: "Chris Haroun",
+      thumbnail:"https://udemy-images.udemy.com/course/480x270/258316_55e9_4.jpg",
+      views:1231,
+    },
+    {
+      id:"8",
+      title : "The Complete Digital Marketing Course - 12 Courses in 1",
+      author: "Stephen Grider",
+      thumbnail:"https://udemy-images.udemy.com/course/480x270/625204_436a_2.jpg",
+      views:1231,
+    },
+    {
+      id:"9",
+      title : "Item 9",
+      author: "Chris Haroun",
+      thumbnail:"https://udemy-images.udemy.com/course/480x270/396876_cc92_7.jpg",
+      views:1231,
+    },
+    {
+      id:"10",
+      title : "How to Start an Amazon FBA Store on a Tight Budget",
+      author: "Stephen Grider",
+      thumbnail:"https://udemy-images.udemy.com/course/480x270/62721_eed7_7.jpg",
+      views:1231,
+    },
+    {
+      id:"11",
+      title : "Complete Python Bootcamp: Go from zero to hero in Python 3",
+      author: "Theo McArthur",
+      thumbnail: "https://udemy-images.udemy.com/course/480x270/1046722_cbd7_2.jpg",
+      views:1231,
+    },
+  ];
+}
