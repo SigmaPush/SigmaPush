@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { selectItem } from '../../actions/index';
 import GridList from '../common/GridList';
+
 class FeaturedList extends Component {
   render() {
     return (
