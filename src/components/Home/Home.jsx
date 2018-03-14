@@ -4,6 +4,7 @@ import Footer from '../common/Footer';
 import Carousel from './Carousel';
 import FeaturedList from './FeaturedList';
 import AuthorList from './AuthorList';
+import './Home.css';
 
 class Home extends Component {
   render() {
