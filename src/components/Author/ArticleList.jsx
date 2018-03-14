@@ -4,10 +4,17 @@ import ArticleItem from './ArticleItem';
 
 class ArticleList extends Component {
   render() {
+    const articleItems = this.props.authorArticles.map((article) => {
+      return <ArticleItem
+        article={article}
+        key={article.title}
+        />
+    });
+
     return (
-      <div className="col-md-6 bg-success text-center">
-        <ArticleItem />
-      </div>
+      <ul className="list-group">
+        {articleItems}
+      </ul>
     );
   }
 }
