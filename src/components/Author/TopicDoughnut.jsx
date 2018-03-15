@@ -32,15 +32,16 @@ class TopicDoughnut extends Component {
     };
 
     const ctx = ReactDOM.findDOMNode(this.refs.chart).getContext("2d");
-    new Chart(ctx, {
+    let doughnut = new Chart(ctx, {
       type: 'doughnut',
       data: data,
       options: {
         legend: {
-          display: true,
+          display: false,
           position: 'bottom',
           onClick: (event, element) => {},
         },
+        cutoutPercentage: 70,
         elements: {
           center: {
             text: 'Topic Name',
@@ -50,9 +51,15 @@ class TopicDoughnut extends Component {
           },
         },
         onClick: (event, element) => {
-          // console.log(event.target);
-          // console.log(event.pageX, event.pageY);
-          if (element.length) {
+          let centerX = doughnut.width / 2;
+          let centerY = doughnut.height / 2;
+          let distance = (event.offsetX - centerX) ** 2 + (event.offsetY - centerY) ** 2;
+          
+          if (distance < doughnut.innerRadius ** 2) {
+            // TODO: go back to superTopic and fetch data
+            console.log('hahaha');
+          } else if (element.length) {
+            // TODO: fetch data of clicked topic
             const idx = element[0]._index;
             const clickedTopic = element[0]._chart.config.data.labels[idx];
             console.log(clickedTopic);

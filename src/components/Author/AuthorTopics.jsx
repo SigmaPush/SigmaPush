@@ -67,7 +67,7 @@ const authorArticles = [
     subTopic_1: 'Graph',
     subTopic_2: 'BFS',
     imgUrl: 'https://cdn-images-1.medium.com/fit/c/152/156/1*D2Nx7mm3Q-OENTG_Vq_btA.jpeg',
-    description: 'lalalala2 duhakdas dshajkds dsakhdjas jashsa shakjsahdkas dkashdahdasd h dhsajdhkad shjdas h dshj dshjk hjskdah ',
+    description: 'lalalala2',
   },
   {
     title: 'Article 3',
@@ -110,34 +110,9 @@ class AuthorTopics extends Component {
             <TopicDoughnut authorTopics={authorTopics} />
           </div>
           <div className="col-md-6">
-            {/* <div className="btn-group justify-content-end" role="group" aria-label="Sort Buttons">
-              <div><button type="button" className="btn btn-secondary">Sort1</button></div>
-              <div><button type="button" className="btn btn-secondary">Sort2</button></div>
-              <div><button type="button" className="btn btn-secondary">Sort3</button></div>
-            </div> */}
             <div>
               <ArticleList activeTopics={activeTopics} authorArticles={authorArticles} />
             </div>
-            <br/>
-            <nav aria-label="Page navigation example">
-                <ul className="pagination justify-content-center">
-                  <li className="page-item">
-                    <a className="page-link" href="/" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                      <span className="sr-only">Previous</span>
-                    </a>
-                  </li>
-                  <li className="page-item"><a className="page-link" href="/">1</a></li>
-                  <li className="page-item"><a className="page-link" href="/">2</a></li>
-                  <li className="page-item"><a className="page-link" href="/">3</a></li>
-                  <li className="page-item">
-                    <a className="page-link" href="/" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                      <span className="sr-only">Next</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
           </div>
         </div>
       </div>
