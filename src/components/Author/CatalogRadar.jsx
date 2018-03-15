@@ -54,7 +54,7 @@ class CatalogRadar extends Component {
 
   render () {
     // FIXME:ref should be changed to callback version as recommended
-    return (<canvas ref="chart" height="300px" />);
+    return (<canvas ref="chart" height="200px" />);
   }
 }
 

@@ -31,9 +31,10 @@ const allCatalogs = [
 
 function AuthorInfo(props) {
   const { name, avatar, description, radarOption, catalogs } = author;
+  
   return (
     <div className="container">
-      <div className="row justify-content-md-center">
+      <div className="row justify-content-md-center pt-4">
         <div className="col-md-6 text-center" >
           <CatalogRadar catalogs={catalogs} option={radarOption} allCatalogs={allCatalogs} />
         </div>
