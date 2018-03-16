@@ -14,26 +14,10 @@ class Home extends Component {
         <Carousel />
         <div className="container-fluid">
           <div className="row">
-            <div className="col-sm-12 col-md-12">
-              <FeaturedList title="Popular Articles" containerWidth="12" mode="table" />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-sm-12 col-md-12">
-              <FeaturedList title="Popular Articles" containerWidth="12" mode="slider" />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-sm-12 col-md-10">
-              <FeaturedList title="Popular Articles" containerWidth="10" />
-            </div>
-            <div className="d-none d-md-block col-md-2">
-              <AuthorList />
-            </div>
-          </div>
-          <div className="row">
             <div className="col-sm-12 col-md-9">
               <FeaturedList title="Popular Articles" containerWidth="9" />
+              <FeaturedList title="New Articles" containerWidth="9" />
+              <FeaturedList title="Related Articles" containerWidth="9" />
             </div>
             <div className="d-none d-md-block col-md-3">
               <AuthorList />

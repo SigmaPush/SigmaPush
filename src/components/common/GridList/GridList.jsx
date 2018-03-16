@@ -6,9 +6,11 @@ class GridList extends Component {
   constructor(props) {
     super(props);
     this.title = props.title;
+    // containerWidh: 9, 10, 12 conresponsing to bootstrap col
     this.containerWidth = props.containerWidth;
     this.itemWidth = props.itemWidth ? props.itemWidth : 214;
     this.items = props.items;
+    // mode: table, slider
     this.mode = props.mode ? props.mode : "slider";
 
     this.isShowAll = false;
