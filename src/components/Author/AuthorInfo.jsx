@@ -31,7 +31,6 @@ const allCatalogs = [
 
 function AuthorInfo(props) {
   const { name, avatar, description, radarOption, catalogs } = author;
-
   return (
     <div className="container border-primary border my-2">
       <div className="row justify-content-center">

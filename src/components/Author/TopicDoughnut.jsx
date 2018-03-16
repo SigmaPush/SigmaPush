@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Chart from 'chart.js';
 
 const bgColor = ['#FF6384','#36A2EB','#FFCE56','#FFFFFF',];
+
 class TopicDoughnut extends Component {
   componentDidMount() {
     this.initializeChart(this.props);
@@ -136,12 +137,12 @@ class TopicDoughnut extends Component {
     });
 
     return (
-    <div className="border border-warning">
-      <canvas ref="chart" height="400px" />
-      <ul className="list-unstyled ml-2">
-        {legends}
-      </ul>
-    </div>
+      <div className="border border-warning">
+        <canvas ref="chart" height="400px" />
+        <ul className="list-unstyled ml-2">
+          {legends}
+        </ul>
+      </div>
     );
   }
 }
