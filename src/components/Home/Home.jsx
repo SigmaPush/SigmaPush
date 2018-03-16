@@ -22,7 +22,7 @@ class Home extends Component {
             <div className="col-sm-12 col-md-12">
               <FeaturedList title="Popular Articles" containerWidth="12" mode="slider" />
             </div>
-          </div>git
+          </div>
           <div className="row">
             <div className="col-sm-12 col-md-10">
               <FeaturedList title="Popular Articles" containerWidth="10" />
