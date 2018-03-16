@@ -23,4 +23,5 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ selectItem: selectItem }, dispatch);
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(FeaturedList);

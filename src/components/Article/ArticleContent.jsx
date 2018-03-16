@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import './Article.css';
 
-
 export default class ArticleContent extends Component {
   render() {
     return (
-      <div>
+      <div className="article-content">
         <nav id="content" className="navbar navbar-light bg-light">
-          <a className="navbar-brand" href="">My name is xiao fen hong</a>
+          <a className="navbar-brand justify-content-center" href="">
+            <h1>My name is xiao fen hong</h1>
+          </a>
           <ul className="nav nav-pills">
             <li className="nav-item">
               <a className="nav-link" href="#fat">@fat</a>
@@ -26,7 +27,8 @@ export default class ArticleContent extends Component {
             </li>
           </ul>
         </nav>
-        <body data-spy="scroll" data-target="#content" data-offset="0">
+        <div data-spy="scroll" data-target="#content" data-offset="0">
+          <img className="card-img-top" src="https://udemy-images.udemy.com/course/480x270/1319066_eee6_2.jpg" alt=" Loading Error" />
           <h4 id="fat">@fat</h4>
           <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. 
             Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. 
@@ -62,8 +64,9 @@ export default class ArticleContent extends Component {
             williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa 
             biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.
           </p>
-        </body>
+        </div>
       </div>
     );
   }
 }
+
