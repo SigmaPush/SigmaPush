@@ -5,9 +5,9 @@ import AuthorListItem from './AuthorListItem';
 class AuthorList extends Component {
   renderListItem(item) {
     return (
-      <div>
+      <li key={item.id} className="list-group-item pl-0 pr-0">
         <AuthorListItem item={item} />
-      </div>
+      </li>
     );
   }
   render() {
@@ -15,9 +15,9 @@ class AuthorList extends Component {
     return (
       <div>
         <h5>Popular Contributor</h5>
-        <div class="list-group home-author-list">
+        <ul className="list-group list-group-flush home-author-list border-bottom">
           {items.map(this.renderListItem)}
-        </div>
+        </ul>
       </div>
     );
   }
