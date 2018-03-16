@@ -4,7 +4,7 @@ import './Article.css';
 export default class References extends Component {
   render() {
     return (
-      <div className="container-fluid border">
+      <div className="border article-reference">
         <ul className="nav nav-tabs" id="myTab" role="tablist">
           <li className="nav-item">
             <a className="nav-link active" id="home-tab" data-toggle="tab" href="#comment" role="tab" aria-controls="comment" aria-selected="true">Comment</a>
