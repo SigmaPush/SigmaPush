@@ -8,7 +8,7 @@ import authorPhoto from '../../lidaxia.jpg';
 const author = {
   name: 'lidaxia',
   avatar: authorPhoto,
-  description: 'lalala lalala woshimaibaodexiaohangjia \n lalala lalala woshimaibaodexiaohangjia',
+  description: 'lalala lalala wo shi mai bao de xiao hang jia \n lalala lalala wo shi mai bao de xiao hang jia',
   radarOption: true,
   catalogs: {
       ML: 29,
@@ -31,14 +31,13 @@ const allCatalogs = [
 
 function AuthorInfo(props) {
   const { name, avatar, description, radarOption, catalogs } = author;
-  
   return (
-    <div className="container">
-      <div className="row justify-content-md-center pt-4">
-        <div className="col-md-6 text-center" >
+    <div className="container border-primary border my-2">
+      <div className="row justify-content-center">
+        <div className="col-md-4 d-flex align-items-center border border-success m-1" >
           <CatalogRadar catalogs={catalogs} option={radarOption} allCatalogs={allCatalogs} />
         </div>
-        <div className="col-md-6 text-right" >
+        <div className="col-md-6 text-right d-flex align-items-center border border-success m-1" >
           <AuthorProfile name={name} avatar={avatar} description={description} />
         </div>
       </div>

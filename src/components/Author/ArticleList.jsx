@@ -9,7 +9,7 @@ class ArticleList extends Component {
     this.state = {
       authorArticles: this.props.authorArticles,
       activePage: 1,
-      articlesPerPage: 2,
+      articlesPerPage: 3,
       lowerBound: 0,
       upperBound: 3,
       isPrevActive: false,
@@ -79,7 +79,7 @@ class ArticleList extends Component {
   render() {
     const { authorArticles, activePage, articlesPerPage, lowerBound, upperBound } = this.state;
     const { isPrevActive, isNextActive } = this.state;
-    
+
     const idxOfFirstArticle = (activePage - 1) * articlesPerPage;
     const idxOfLastArticle = activePage * articlesPerPage;
     const activeArticles = authorArticles.slice(idxOfFirstArticle, idxOfLastArticle);
@@ -109,7 +109,7 @@ class ArticleList extends Component {
 
     return (
       <div>
-        <ul className="list-group">
+        <ul className="list-group border border-warning">
           {articleItems}
         </ul>
         <nav aria-label="Page navigation">

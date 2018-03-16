@@ -1,20 +1,14 @@
 import React from 'react';
 
 function AuthorProfile({ name, avatar, description }) {
-  if (!name) {
-    return <div>Loading...</div>
-  }
-
   return (
-    <div>
-      <div className="row">
-        <div className="col-md-7">
-          <h4>{name}</h4>
-          <h6 className="">{description}</h6>
-        </div>
-        <div className="col-md-5">
-        <img className="rounded float-left p-1 img-fluid" src={avatar} alt="avatar" />
-        </div>
+    <div className="row justify-content-end border border-warning m-1">
+      <div className="col-md-6 border border-danger mx-1">
+        <h4>{name}</h4>
+        <small>{description}</small>
+      </div>
+      <div className="col-md-5 d-flex align-items-center border border-danger mx-1">
+        <img className="img-fluid" src={avatar} alt="avatar" />
       </div>
     </div>
   );
