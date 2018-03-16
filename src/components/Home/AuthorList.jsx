@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AuthorListItem from './AuthorListItem';
+
 class AuthorList extends Component {
   renderListItem(item) {
     return (
