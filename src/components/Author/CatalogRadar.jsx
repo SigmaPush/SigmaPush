@@ -39,7 +39,7 @@ class CatalogRadar extends Component {
         },
       ],
     };
-  
+
     const ctx = ReactDOM.findDOMNode(this.refs.chart).getContext("2d");
     new Chart(ctx, {
       type: 'radar',
@@ -54,7 +54,7 @@ class CatalogRadar extends Component {
 
   render () {
     // FIXME:ref should be changed to callback version as recommended
-    return (<canvas ref="chart" height="200px" />);
+    return (<canvas className="border border-warning m-1" ref="chart" height="300px" />);
   }
 }
 

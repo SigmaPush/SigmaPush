@@ -104,15 +104,16 @@ const authorArticles = [
 class AuthorTopics extends Component {
   render() {
     return (
-      <div className="container">
-        <div className="row justify-content-md-center pt-4">
-          <div className="col-md-4">
+      <div className="container border border-primary mb-2">
+        <div className="row justify-content-md-around m-2">
+          <div className="col-md-4 border border-success">
             <TopicDoughnut authorTopics={authorTopics} />
           </div>
-          <div className="col-md-6">
-            <div>
-              <ArticleList activeTopics={activeTopics} authorArticles={authorArticles} />
-            </div>
+
+          {/* TODO: move child state up */}
+          {/* TODO: move pagination nav up and keep it displayed in the bottom */}
+          <div className="col-md-7 border border-success">
+            <ArticleList activeTopics={activeTopics} authorArticles={authorArticles} />
           </div>
         </div>
       </div>

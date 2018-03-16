@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Chart from 'chart.js';
 
+const bgColor = ['#FF6384','#36A2EB','#FFCE56','#FFFFFF',];
 class TopicDoughnut extends Component {
   componentDidMount() {
     this.initializeChart(this.props);
@@ -25,8 +26,7 @@ class TopicDoughnut extends Component {
       datasets: [
         {
           data: activeData,
-          backgroundColor: ['#FF6384','#36A2EB','#FFCE56','#FFFFFF',],
-          hoverBackgroundColor: ['#FF6384','#36A2EB','#FFCE56','#FFFFFF',],
+          backgroundColor: bgColor,
         }
       ],
     };
@@ -114,9 +114,33 @@ class TopicDoughnut extends Component {
   }
 
   render() {
+    const labels = this.props.authorTopics.reduce((acc, cur) => {
+      acc.push(cur.topic);
+      return acc;
+    }, []);
+
+    const legends = labels.map((label, idx) => {
+      const legendColor = bgColor[idx];
+      const legendStyle = {
+        height: '10px',
+        width: '40px',
+        display: 'inline-block',
+        backgroundColor: legendColor,
+      };
+      return (
+        <li key={label}>
+          <span className="badge mx-2" style={legendStyle} />
+          {label}
+        </li>
+      );
+    });
+
     return (
-    <div>
+    <div className="border border-warning">
       <canvas ref="chart" height="400px" />
+      <ul className="list-unstyled ml-2">
+        {legends}
+      </ul>
     </div>
     );
   }
