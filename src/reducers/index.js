@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import articleReducer from './reducer_article';
-import authorReducer from './reducer_author';
+import articlesReducer from './reducer_articles';
+import authorsReducer from './reducer_authors';
 
 const rootReducer = combineReducers({
-  articles: articleReducer,
-  authors: authorReducer,
+  featuredItems: articlesReducer,
+  popularAuthors: authorsReducer,
 });
 
 export default rootReducer;

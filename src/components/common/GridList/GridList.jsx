@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
 import GridCard from './GridCard';
 import './GridList.css';
 
@@ -13,9 +12,10 @@ class GridList extends Component {
     this.items = props.items;
     // mode: table, slider
     this.mode = props.mode ? props.mode : "slider";
-    
+
+    this.isShowAll = false;
     this.xOffset = 0;
-    this.maxWith = 0;
+    this.maxWith = this.items.length * this.itemWidth;
     this.state = {
       style: this.getStyleObj(),
       isShowAll: false,
@@ -25,15 +25,14 @@ class GridList extends Component {
     this.getStyleObj = this.getStyleObj.bind(this);
     this.onClickPre = this.onClickPre.bind(this);
     this.onClickNext = this.onClickNext.bind(this);
+    this.renderListItem = this.renderListItem.bind(this);
     this.onToggerShow = this.onToggerShow.bind(this);
     this.ActionButtons = this.ActionButtons.bind(this);
-    this.calculateWith = this.calculateWith.bind(this);
   }
   getStyleObj() {
-    const isShowAll = this.state && this.state.isShowAll ;
     return {
       transform: `translateX(${this.xOffset}px)`,
-      height: isShowAll ? "auto" : "245px",
+      height: this.isShowAll ? "auto" : "245px",
     };
   }
   onClickPre(event) {
@@ -58,27 +57,33 @@ class GridList extends Component {
       isShowNextBtn: hasNext,
     });
   }
+  renderListItem(item) {
+    return (
+      <div className="grid-list-item" key={item.id} style={{ width: this.itemWidth }}>
+        <GridCard data={item} />
+      </div>
+    );
+  }
   onToggerShow(event) {
-    let { isShowAll } = this.state;
-    isShowAll = !isShowAll;
+    this.isShowAll = !this.isShowAll;
     const style = this.getStyleObj();
+    console.log(style);
     this.setState({
-      isShowAll: isShowAll,
+      isShowAll: this.isShowAll,
       style: style,
     });
   }
   ActionButtons() {
-    const { isShowAll, isShowPreBtn, isShowNextBtn } = this.state;
     if (this.mode === 'slider') {
       return (
         <div>
-          {isShowPreBtn &&
+          {this.state.isShowPreBtn &&
             <a role="button" onClick={this.onClickPre} className="grid-list-slider-btn grid-list-slider-btn-pre ">
               <span className="oi oi-chevron-left"></span>
               <span className="sr-only">Previous items</span>
             </a>
           }
-          {isShowNextBtn &&
+          {this.state.isShowNextBtn &&
             <a role="button" onClick={this.onClickNext} className="grid-list-slider-btn grid-list-slider-btn-next ">
               <span className="oi oi-chevron-right"></span>
               <span className="sr-only">Next items</span>
@@ -89,31 +94,19 @@ class GridList extends Component {
     } else {
       return (
         <div>
-          <div className="grid-list-bottom-btn" onClick={this.onToggerShow} role="button" >{isShowAll ? "SHOW LESS" : "SHOW MORE"}</div>
+          <div className="grid-list-bottom-btn" onClick={this.onToggerShow} role="button" >{this.state.isShowAll ? "SHOW LESS" : "SHOW MORE"}</div>
         </div>
       );
     }
   }
-  calculateWith(numOfItems) {
-    this.maxWith = numOfItems * this.itemWidth;
-  }
   render() {
     const listClass = `grid-list grid-list-${this.containerWidth} grid-list-${this.mode}`;
-    const { items } = this.props;
-    this.calculateWith(_.size(items));
-    const renderList = _.map(items, item => {
-      return (
-        <div className="grid-list-item" key={item.id} style={{ width: this.itemWidth }}>
-          <GridCard data={item} />
-        </div>
-      );
-    });
     return (
       <div className={listClass} ref={(dom) => { this.listWrapper = dom; }}>
         <h5>{this.title}</h5>
         <div className="grid-list-mask">
           <div className="grid-list-item-group" style={this.state.style}>
-            {renderList}
+            {this.items.map(this.renderListItem)}
           </div>
         </div>
         {this.ActionButtons()}
