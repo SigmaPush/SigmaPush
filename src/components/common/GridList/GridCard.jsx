@@ -24,8 +24,8 @@ class GridCard extends Component {
               {this.data.author.name}
             </div>
             <div className="grid-list-item-card-data">
-              {this.data.views} views
-</div>
+              {this.data.stats.view} views
+            </div>
           </div>
         </div>
       </div>
