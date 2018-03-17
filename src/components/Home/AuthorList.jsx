@@ -1,22 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
+import { listAuthor } from '../../actions/action_author';
 import AuthorListItem from './AuthorListItem';
 
 class AuthorList extends Component {
-  renderListItem(item) {
-    return (
-      <li key={item.id} className="list-group-item pl-0 pr-0">
-        <AuthorListItem item={item} />
-      </li>
-    );
+  componentDidMount() {
+    this.props.listAuthor();
   }
   render() {
-    const items = this.props.items;
+    const renderList = _.map(this.props.items, item => {
+      return (
+        <li key={item.id} className="list-group-item pl-0 pr-0">
+          <AuthorListItem item={item} />
+        </li>
+      );
+    });
     return (
       <div>
         <h5>Popular Contributor</h5>
         <ul className="list-group list-group-flush home-author-list border-bottom">
-          {items.map(this.renderListItem)}
+          {renderList}
         </ul>
       </div>
     );
@@ -25,8 +29,8 @@ class AuthorList extends Component {
 
 function mapStateToProps(state) {
   return {
-    items: state.popularAuthors
+    items: state.authors
   }
 }
 
-export default connect(mapStateToProps, null)(AuthorList);
+export default connect(mapStateToProps, { listAuthor })(AuthorList);
