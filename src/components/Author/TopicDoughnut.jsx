@@ -8,26 +8,14 @@ class TopicDoughnut extends Component {
     this.initializeChart(this.props);
   }
 
-  initializeChart({ authorTopics }) {
-    let activeLabels = [];
-    let activeData = [];
-
-    activeLabels = authorTopics.reduce((acc, cur) => {
-      acc.push(cur.topic);
-      return acc;
-    }, []);
-    activeData = authorTopics.reduce((acc, cur) => {
-      acc.push(cur.number);
-      return acc;
-    }, []);
-
+  initializeChart({ labels, counts }) {
     const data = {
-      labels: activeLabels,
+      labels: labels,
       datasets: [
         {
-          data: activeData,
+          data: counts,
           backgroundColor: bgColor,
-        }
+        },
       ],
     };
 
@@ -114,11 +102,7 @@ class TopicDoughnut extends Component {
   }
 
   render() {
-    const labels = this.props.authorTopics.reduce((acc, cur) => {
-      acc.push(cur.topic);
-      return acc;
-    }, []);
-
+    const labels = this.props.labels;
     const legends = labels.map((label, idx) => {
       const legendColor = bgColor[idx];
       const legendStyle = {
