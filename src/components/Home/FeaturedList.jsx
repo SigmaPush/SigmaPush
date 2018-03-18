@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { selectItem } from '../../actions/index';
+import { listArticle } from '../../actions/action_article';
 import GridList from '../common/GridList';
 
 class FeaturedList extends Component {
+  componentDidMount() {
+    this.props.listArticle();
+  }
   render() {
+    const { title, containerWidth, mode, items } = this.props;
     return (
       <div>
-        <GridList title={this.props.title} containerWidth={this.props.containerWidth} items={this.props.items} mode={this.props.mode}/>
+        <GridList title={title} containerWidth={containerWidth} items={items} mode={mode} />
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-    return {
-        items: state.featuredItems
-    }
+  return {
+    items: state.articles,
+  }
 }
 
-function mapDispatchToProps(dispatch){
-    return bindActionCreators({ selectItem: selectItem }, dispatch);
-}
-export default connect(mapStateToProps, mapDispatchToProps)(FeaturedList);
+export default connect(mapStateToProps, { listArticle })(FeaturedList);
