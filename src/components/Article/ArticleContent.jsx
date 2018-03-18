@@ -3,11 +3,12 @@ import './Article.css';
 
 export default class ArticleContent extends Component {
   render() {
+    const data = this.props.data;
     return (
       <div className="article-content">
         <nav id="content" className="navbar navbar-light bg-light">
           <a className="navbar-brand justify-content-center" href="">
-            <h1>My name is xiao fen hong</h1>
+            <h1>{data.title}</h1>
           </a>
           <ul className="nav nav-pills">
             <li className="nav-item">
@@ -28,7 +29,7 @@ export default class ArticleContent extends Component {
           </ul>
         </nav>
         <div data-spy="scroll" data-target="#content" data-offset="0">
-          <img className="card-img-top" src="https://udemy-images.udemy.com/course/480x270/1319066_eee6_2.jpg" alt=" Loading Error" />
+          <img className="card-img-top" src={data.thumbnail} alt=" Loading Error" />
           <h4 id="fat">@fat</h4>
           <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. 
             Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. 
@@ -69,4 +70,5 @@ export default class ArticleContent extends Component {
     );
   }
 }
+
 

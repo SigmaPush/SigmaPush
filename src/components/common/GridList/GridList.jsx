@@ -7,6 +7,7 @@ class GridList extends Component {
   constructor(props) {
     super(props);
     this.title = props.title;
+    this.url = props.url;
     // containerWidh: 9, 10, 12 conresponsing to bootstrap col
     this.containerWidth = props.containerWidth;
     this.itemWidth = props.itemWidth ? props.itemWidth : 214;
@@ -104,7 +105,7 @@ class GridList extends Component {
     const renderList = _.map(items, item => {
       return (
         <div className="grid-list-item" key={item.id} style={{ width: this.itemWidth }}>
-          <GridCard data={item} />
+          <GridCard data={item} url={this.url}/>
         </div>
       );
     });

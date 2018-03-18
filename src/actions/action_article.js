@@ -3,7 +3,8 @@ import _ from 'lodash';
 const dataArray = [
   {
     id: "article_1",
-    author: { id: "author_1", name: "Andrew" },
+    author: { id: "author_1", name: "Andrew", avatar: "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-instructor-photos.s3.amazonaws.com/2a/6192a04f1311e7ba12057425631cbc/AndrewNg-Headshot.jpg?auto=format%2Ccompress&dpr=2&w=64&h=64",
+  },
     title: "Complete Guide to TensorFlow for Deep Learning with Python",
     description: "",
     thumbnail: "https://udemy-images.udemy.com/course/480x270/1326292_4dcf.jpg",
@@ -23,7 +24,8 @@ const dataArray = [
   },
   {
     id: "article_2",
-    author: { id: "author_1", name: "Andrew" },
+    author: { id: "author_1", name: "Andrew", avatar: "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-instructor-photos.s3.amazonaws.com/b1/30a8207be611e7ac8279c987513482/Younes.jpg?auto=format%2Ccompress&dpr=2&w=64&h=64",
+  },
     title: "Machine Learning A-Z™: Hands-On Python & R In Data Science",
     description: "",
     thumbnail: "https://udemy-images.udemy.com/course/480x270/950390_270f_3.jpg",
@@ -43,7 +45,8 @@ const dataArray = [
   },
   {
     id: "article_3",
-    author: { id: "author_2", name: "Younes" },
+    author: { id: "author_2", name: "Younes", avatar: "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-instructor-photos.s3.amazonaws.com/da/0f3120cee911e7aa754345b53081fb/Kian-Katan-copy.jpg?auto=format%2Ccompress&dpr=2&w=64&h=64",
+  },
     title: "Data Structures and Algorithms: Deep Dive Using Java",
     description: "",
     thumbnail: "https://udemy-images.udemy.com/course/480x270/1419186_5b21_2.jpg",
