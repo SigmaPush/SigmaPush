@@ -107,24 +107,20 @@ const authorArticles = [
     topics: ['NLP', 'Algorithms', 'Other'],
   },
 ];
-const topics = authorArticles.reduce((acc, cur) => {
-  acc.push(cur['topics']);
-  return acc;
-}, []);
-
 
 class AuthorTopics extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      selectedTopics:['Algorithms'],
       activePage: 1,
       articlesPerPage: 2,
       topicLevel: 0,
+      selectedTopics:[],
     }
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleDoughnutClick = this.handleDoughnutClick.bind(this);
   }
 
   handleClick(event) {
@@ -168,21 +164,52 @@ class AuthorTopics extends Component {
   }
 
   getDoughnutData() {
-    const { topicLevel } = this.state;
-    const curTopics = _.countBy(topics, (topic) => {
-      return topic[topicLevel];
-    });
+    const topics = authorArticles.reduce((acc, cur) => {
+      acc.push(cur['topics']);
+      return acc;
+    }, []);
+    const { topicLevel, selectedTopics } = this.state;
+    const curTopics = _.countBy(
+      (
+        topics.filter((topic, idx) => {
+          return selectedTopics.every((selectedTopic, idx) => {
+            return topic[idx] === selectedTopic;
+          });
+        })
+      ),
+      (topic => topic[topicLevel])
+    );
+
     const labels = Object.keys(curTopics);
     const counts = Object.values(curTopics);
 
     return { labels, counts };
   }
+
+  handleDoughnutClick(topic) {
+    let { topicLevel, selectedTopics } = this.state;
+    if (topic === '' && selectedTopics.length > 0) {
+      topicLevel = topicLevel - 1;
+      selectedTopics.pop();
+    } else if (topic !== '' && selectedTopics.length < 3) {
+      topicLevel = topicLevel + 1;
+      selectedTopics.push(topic);
+    }
+
+    this.setState({
+      topicLevel,
+      selectedTopics,
+      activePage: 1,
+    });
+  }
+
   render() {
     const filteredArticles = this.calculateFilteredArticles();
     const activeArticles = this.calculateActiveArticles(filteredArticles);
 
-    const { activePage, articlesPerPage } = this.state;
+    const { activePage, articlesPerPage, selectedTopics } = this.state;
     const { labels, counts } = this.getDoughnutData();
+    const topic = _.last(selectedTopics);
 
     return (
       <div className="container border border-primary mb-2">
@@ -192,6 +219,8 @@ class AuthorTopics extends Component {
             <TopicDoughnut 
               counts={counts}
               labels={labels}
+              topic={topic}
+              onClick={(topic) => this.handleDoughnutClick(topic)}
             />
           </div>
           <div className="col-md-7 border border-success">
