@@ -22,7 +22,7 @@ class Article extends Component {
     return (
       <div>
         <Header />
-        <AuthorInfo data={article.author}/>
+        <AuthorInfo className="author-info" data={article.author}/>
         <ArticleContent data={article}/>
         <Toolbar />
         <div className="container border">

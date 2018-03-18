@@ -29,7 +29,7 @@ const dataArray = [
     title: "Machine Learning A-Z™: Hands-On Python & R In Data Science",
     description: "",
     thumbnail: "https://udemy-images.udemy.com/course/480x270/950390_270f_3.jpg",
-    content: "",
+    content: "http://www.utdallas.edu/~nrr150130/cs6347/2018sp/lects/Lecture_1_Intro.pdf",
     cat: { id: "cat1", name: "Deep Learning" },
     tag: {
       "tag1": "face recognition",
