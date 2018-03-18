@@ -11,7 +11,7 @@ const dataArray = [
     lastName: "Ng",
     title: "Computer Scientist",
     description: "Co-founder, Coursera; Adjunct Professor, Stanford University; formerly head of Baidu AI Group/Google Brain",
-    type: 1, //reader: 0. author: 1
+    type: 1, // reader: 0. author: 1
     avatar: "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-instructor-photos.s3.amazonaws.com/2a/6192a04f1311e7ba12057425631cbc/AndrewNg-Headshot.jpg?auto=format%2Ccompress&dpr=2&w=64&h=64",
     topicTree: {},
     stats: {
@@ -29,7 +29,7 @@ const dataArray = [
     lastName: "Mourri",
     title: "Teaching Assistant",
     description: "Mathematical & Computational Sciences, Stanford University, deeplearning.ai",
-    type: 1, //reader: 0. author: 1
+    type: 1, // reader: 0. author: 1
     avatar: "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-instructor-photos.s3.amazonaws.com/b1/30a8207be611e7ac8279c987513482/Younes.jpg?auto=format%2Ccompress&dpr=2&w=64&h=64",
     topicTree: {},
     stats: {

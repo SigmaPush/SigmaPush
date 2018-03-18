@@ -50,9 +50,9 @@ const dataArray = [
     content: "",
     cat: { id: "cat2", name: "Algorithm" },
     tag: {
-      "tag1": "java",
-      "tag2": "dynamic programming",
-      "tag3": "multi-threading",
+      "tag4": "java",
+      "tag5": "dynamic programming",
+      "tag6": "multi-threading",
     },
     stats: {
       view: 12345,
@@ -90,8 +90,8 @@ const dataArray = [
     content: "",
     cat: { id: "cat3", name: "Database" },
     tag: {
-      "tag1": "java",
-      "tag2": "MySQL",
+      "tag4": "java",
+      "tag7": "MySQL",
     },
     stats: {
       view: 12345,
