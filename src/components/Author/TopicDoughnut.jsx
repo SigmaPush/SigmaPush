@@ -9,26 +9,14 @@ class TopicDoughnut extends Component {
     this.initializeChart(this.props);
   }
 
-  initializeChart({ authorTopics }) {
-    let activeLabels = [];
-    let activeData = [];
-
-    activeLabels = authorTopics.reduce((acc, cur) => {
-      acc.push(cur.topic);
-      return acc;
-    }, []);
-    activeData = authorTopics.reduce((acc, cur) => {
-      acc.push(cur.number);
-      return acc;
-    }, []);
-
+  initializeChart({ labels, counts, topic }) {
     const data = {
-      labels: activeLabels,
+      labels: labels,
       datasets: [
         {
-          data: activeData,
+          data: counts,
           backgroundColor: bgColor,
-        }
+        },
       ],
     };
 
@@ -45,7 +33,6 @@ class TopicDoughnut extends Component {
         cutoutPercentage: 70,
         elements: {
           center: {
-            text: 'Topic Name',
             color: '#FF6384',
             fontStyle: 'Arial',
             sidePadding: 20,
@@ -56,15 +43,17 @@ class TopicDoughnut extends Component {
           let centerY = doughnut.height / 2;
           let distance = (event.offsetX - centerX) ** 2 + (event.offsetY - centerY) ** 2;
           
+          // FIXME: need promise or not?
           if (distance < doughnut.innerRadius ** 2) {
-            // TODO: go back to superTopic and fetch data
-            console.log('hahaha');
+            this.props.onClick && this.props.onClick('');
           } else if (element.length) {
-            // TODO: fetch data of clicked topic
             const idx = element[0]._index;
             const clickedTopic = element[0]._chart.config.data.labels[idx];
-            console.log(clickedTopic);
+            this.props.onClick && this.props.onClick(clickedTopic);
           }
+          doughnut.data.labels = this.props.labels;
+          doughnut.data.datasets[0]['data'] = this.props.counts;
+          doughnut.update();
         },
       },
       plugins: [
@@ -77,7 +66,8 @@ class TopicDoughnut extends Component {
               // Get options from the center object in options
               const centerConfig = chart.config.options.elements.center;
               const fontStyle = centerConfig.fontStyle || 'Arial';
-              const txt = centerConfig.text;
+              const txt = this.props.topic || 'All';
+              // const txt = centerConfig.text;
               const color = centerConfig.color || '#000';
               const sidePadding = centerConfig.sidePadding || 20;
               const sidePaddingCalculated = (sidePadding / 100) * (chart.innerRadius * 2)
@@ -114,12 +104,8 @@ class TopicDoughnut extends Component {
     });
   }
 
-  render() {
-    const labels = this.props.authorTopics.reduce((acc, cur) => {
-      acc.push(cur.topic);
-      return acc;
-    }, []);
-
+  getLegends() {
+    const { labels } = this.props;
     const legends = labels.map((label, idx) => {
       const legendColor = bgColor[idx];
       const legendStyle = {
@@ -128,6 +114,7 @@ class TopicDoughnut extends Component {
         display: 'inline-block',
         backgroundColor: legendColor,
       };
+
       return (
         <li key={label}>
           <span className="badge mx-2" style={legendStyle} />
@@ -135,6 +122,12 @@ class TopicDoughnut extends Component {
         </li>
       );
     });
+
+    return legends;
+  }
+
+  render() {
+    const legends = this.getLegends();
 
     return (
       <div className="border border-warning">

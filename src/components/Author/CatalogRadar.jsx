@@ -39,7 +39,7 @@ class CatalogRadar extends Component {
         },
       ],
     };
-  
+
     const ctx = ReactDOM.findDOMNode(this.refs.chart).getContext("2d");
     new Chart(ctx, {
       type: 'radar',
