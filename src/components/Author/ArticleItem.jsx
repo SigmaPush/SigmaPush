@@ -2,6 +2,7 @@ import React from 'react';
 
 function ArticleItem(props) {
   const { title, thumbnail, description } = props.article;
+
   return (
     <div className="container row justify-content-end border border-danger m-1">
       <div className="card-body col-8">

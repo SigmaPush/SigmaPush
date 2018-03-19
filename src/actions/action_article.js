@@ -204,8 +204,8 @@ let dataArray = [
     thumbnail: 'https://udemy-images.udemy.com/course/480x270/950390_270f_3.jpg',
     content: '',
     cat: {
-      id: 'cat1',
-      name: 'Deep Learning',
+      id: 'cat3',
+      name: 'Database',
     },
     tags: {
       tag1: 'face recognition',
@@ -234,8 +234,8 @@ let dataArray = [
     thumbnail: 'https://udemy-images.udemy.com/course/480x270/950390_270f_3.jpg',
     content: '',
     cat: {
-      id: 'cat1',
-      name: 'Deep Learning',
+      id: 'cat2',
+      name: 'Algorithm',
     },
     tags: {
       tag1: 'face recognition',
