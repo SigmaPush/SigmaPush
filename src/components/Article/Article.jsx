@@ -7,7 +7,7 @@ import AuthorInfo from "./AuthorInfo"
 import References from "./References";
 import Header from '../common/Header';
 import Footer from '../common/Footer';
-import Toolbar from './ToolBar'
+
 
 class Article extends Component {
   componentDidMount() {
@@ -22,16 +22,16 @@ class Article extends Component {
     return (
       <div>
         <Header />
-        <AuthorInfo className="author-info" data={article.author}/>
-        <ArticleContent data={article}/>
-        <Toolbar />
+        <div>
+          <AuthorInfo className="author-info" data={article.author}/>
+          <ArticleContent data={article}/>
+        </div>
         <div className="container border">
           <RelatedArticles title="Popular Articles" containerWidth="9" url="/Article/" />
         </div>
         <div className="container p-3">
           <References />
         </div>
-        Article : {this.props.match.params.id}
         <Footer />
       </div>
     );

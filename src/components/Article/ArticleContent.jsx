@@ -1,29 +1,26 @@
 import React, { Component } from 'react';
 import './Article.css';
+import _ from 'lodash';
+import Toolbar from './ToolBar'
 
 export default class ArticleContent extends Component {
   render() {
     const data = this.props.data;
+    const items = data.tag;
+    const tagList = _.map(items, item => {
+      return (
+        <li className="nav-item" key={item}>
+          <a className="nav-link" href="">{item}</a>
+        </li>
+      );
+    });
+    console.log(tagList);
     return (
       <div className="article-content">
         <h1 className="article-content-title">{data.title}</h1>
         <nav id="content" className="navbar navbar-light bg-light">
           <ul className="nav nav-pills">
-            <li className="nav-item">
-              <a className="nav-link" href="#fat">{data.tag.tag1}</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#mdo">{data.tag.tag2}</a>
-            </li>
-            <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-              <div className="dropdown-menu">
-                <a className="dropdown-item" href="#one">{data.tag.tag3}</a>
-                <a className="dropdown-item" href="#two">{data.tag.tag4}</a>
-                <div role="separator" className="dropdown-divider"></div>
-                <a className="dropdown-item" href="#three">{data.tag.tag5}</a>
-              </div>
-            </li>
+            {tagList}
           </ul>
         </nav>
         <div data-spy="scroll" data-target="#content" data-offset="0">
@@ -64,6 +61,7 @@ export default class ArticleContent extends Component {
               williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa 
               biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.
             </p>
+            <Toolbar className="toolbarbox"/>
           </div>
         </div>
       </div>
