@@ -9,11 +9,12 @@ import './Author.css';
 
 class Author extends Component {
   render() {
+    const { id } = this.props.match.params;
     return (
       <div>
-        <Header userName="lidaxia" />
+        <Header />
         <AuthorInfo />
-        <AuthorTopics />
+        <AuthorTopics authorId={id} />
         <Footer />
       </div>
     );

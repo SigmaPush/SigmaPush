@@ -24,9 +24,9 @@ ReactDOM.render(
       <div>
         <Switch>
           <Route path="/search/" component={Search} />
-          <Route path="/Article/:id" component={Article} />
-          <Route path="/Author/:id" component={Author} />
-          <Route path="/Reader/:id" component={Reader} />
+          <Route path="/article/:id" component={Article} />
+          <Route path="/author/:id" component={Author} />
+          <Route path="/reader/:id" component={Reader} />
           <Route path="/" component={Home} />
         </Switch>
       </div>
