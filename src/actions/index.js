@@ -3,4 +3,4 @@ export function selectItem(item) {
     type: 'ITEM_SELECTED',
       payload: item,
   };
-}
+};
