@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const dataArray = [
+let dataArray = [
   {
     id: 'article_1',
     author: {
@@ -267,20 +267,19 @@ export function getArticle(id) {
   };
 };
 
-export function listArticle() {
+function filterAuthorArticles(authorId) {
+  return _.filter(dataArray, (article) => {
+    return article.author.id === authorId;
+  });
+}
+
+export function listArticle(authorId = null) {
+  if (authorId !== null) {
+    dataArray = filterAuthorArticles(authorId);
+  }
+
   return {
     type: LIST_ARTICLE,
     payload: dataArray,
-  };
-};
-
-export function getAuthorArticles(authorId) {
-  const authorArticles = _.filter(dataArray, (article) => {
-    return article.author.id === authorId;
-  });
-
-  return {
-    type: GET_AUTHOR_ARTICLES,
-    payload: authorArticles,
   };
 };
