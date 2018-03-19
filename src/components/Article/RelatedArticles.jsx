@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { selectItem } from '../../actions/index';
+import { listArticle } from '../../actions/action_article';
 import GridList from '../common/GridList';
 
 class RelatedArticles extends Component {
+  componentDidMount() {
+    this.props.listArticle();
+  }
   render() {
+    const { title, containerWidth, mode, items, url} = this.props;
     return (
       <div>
-        <GridList title={this.props.title} containerWidth={this.props.containerWidth} items={this.props.items} mode={this.props.mode}/>
+        <GridList title={title} containerWidth={containerWidth} items={items} mode={mode} url={url}/>
       </div>
     );
   }
@@ -16,11 +19,8 @@ class RelatedArticles extends Component {
 
 function mapStateToProps(state) {
   return {
-    items: state.featuredItems
+    items: state.articles,
   }
 }
 
-function mapDispatchToProps(dispatch){
-  return bindActionCreators({ selectItem: selectItem }, dispatch);
-}
-export default connect(mapStateToProps, mapDispatchToProps)(RelatedArticles);
+export default connect(mapStateToProps, { listArticle })(RelatedArticles);

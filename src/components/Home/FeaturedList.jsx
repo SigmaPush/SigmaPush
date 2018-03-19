@@ -8,10 +8,10 @@ class FeaturedList extends Component {
     this.props.listArticle();
   }
   render() {
-    const { title, containerWidth, mode, items } = this.props;
+    const { title, containerWidth, mode, items, url} = this.props;
     return (
       <div>
-        <GridList title={title} containerWidth={containerWidth} items={items} mode={mode} />
+        <GridList title={title} containerWidth={containerWidth} items={items} mode={mode} url={url}/>
       </div>
     );
   }

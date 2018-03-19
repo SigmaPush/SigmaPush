@@ -15,9 +15,9 @@ class Home extends Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col-sm-12 col-md-9">
-              <FeaturedList title="Popular Articles" containerWidth="9" />
-              <FeaturedList title="New Articles" containerWidth="9" />
-              <FeaturedList title="Related Articles" containerWidth="9" />
+              <FeaturedList title="Popular Articles" containerWidth="9" url="/Article/" />
+              <FeaturedList title="New Articles" containerWidth="9" url="/Article/" />
+              <FeaturedList title="Related Articles" containerWidth="9" url="/Article/" />
             </div>
             <div className="d-none d-md-block col-md-3">
               <AuthorList />
