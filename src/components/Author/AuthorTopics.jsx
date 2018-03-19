@@ -1,119 +1,156 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import _ from 'lodash';
 
 import TopicDoughnut from './TopicDoughnut';
 import ArticleList from './ArticleList';
+import Pagination from './Pagination';
 
-const authorTopics = [
-  {
-    topic: 'Algorithms',
-    number: 100,
-    subTopics: [
-      {
-        topic: 'binarySearch',
-        number: 20,
-        subTopics: [],
-      },
-      {
-        topic: 'BFS',
-        number: 35,
-        subTopics: [
-          {
-            topic: 'Graph',
-            number: 17,
-            subTopics: [],
-          },
-          {
-            topic: 'Tree',
-            number: 18,
-            subTopics: [],
-          },
-        ],
-      },
-      {
-        topic: 'Dynamic Programming',
-        number: 45,
-        subTopics:[],
-      },
-    ]
-  },
-  {
-    topic: 'ML',
-    number: 34,
-    subTopics: [],
-  },
-  {
-    topic: 'OS',
-    number: 46,
-    subTopics: [],
-  },
-];
-const activeTopics = ['Algorithms'];
-const authorArticles = [
-  {
-    title: 'Article 1',
-    catalog: 'Algorithms',
-    tags: ['1', '2', '3', '4', '5'],
-    topic: 'Algorithms',
-    subTopic_1: 'Graph',
-    subTopic_2: 'BFS',
-    imgUrl: 'https://cdn-images-1.medium.com/fit/c/152/156/1*D2Nx7mm3Q-OENTG_Vq_btA.jpeg',
-    description: 'lalalala1',
-  },
-  {
-    title: 'Article 2',
-    catalog: 'Algorithms',
-    tags: ['1', '2', '3', '4', '5'],
-    topic: 'Algorithms',
-    subTopic_1: 'Graph',
-    subTopic_2: 'BFS',
-    imgUrl: 'https://cdn-images-1.medium.com/fit/c/152/156/1*D2Nx7mm3Q-OENTG_Vq_btA.jpeg',
-    description: 'lalalala2',
-  },
-  {
-    title: 'Article 3',
-    catalog: 'Algorithms',
-    tags: ['1', '2', '3', '4', '5'],
-    topic: 'Algorithms',
-    subTopic_1: 'Graph',
-    subTopic_2: 'BFS',
-    imgUrl: 'https://cdn-images-1.medium.com/fit/c/152/156/1*D2Nx7mm3Q-OENTG_Vq_btA.jpeg',
-    description: 'lalalala3',
-  },
-  {
-    title: 'Article 4',
-    catalog: 'Algorithms',
-    tags: ['1', '2', '3', '4', '5'],
-    topic: 'Algorithms',
-    subTopic_1: 'Graph',
-    subTopic_2: 'BFS',
-    imgUrl: 'https://cdn-images-1.medium.com/fit/c/152/156/1*D2Nx7mm3Q-OENTG_Vq_btA.jpeg',
-    description: 'lalalala4',
-  },
-  {
-    title: 'Article 5',
-    catalog: 'Algorithms',
-    tags: ['1', '2', '3', '4', '5'],
-    topic: 'Algorithms',
-    subTopic_1: 'Graph',
-    subTopic_2: 'DFS',
-    imgUrl: 'https://cdn-images-1.medium.com/fit/c/152/156/1*D2Nx7mm3Q-OENTG_Vq_btA.jpeg',
-    description: 'lalalala5',
-  },
-];
+import { getAuthorArticles } from '../../actions/action_article';
+
+const paginationSetting = {
+  articlesPerPage: 2,
+  pageNumberBound: 5,
+}
 
 class AuthorTopics extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activePage: 1,
+      topicLevel: 0,
+      selectedTopics:[],
+    }
+
+    this.handleClick = this.handleClick.bind(this);
+    this.handleDoughnutClick = this.handleDoughnutClick.bind(this);
+  }
+
+  componentDidMount() {
+    const { authorId } = this.props;
+    this.props.getAuthorArticles(authorId);
+  }
+
+  handleClick(event) {
+    const btnId = event.target.id;
+    const activePage = this.getActivePage(btnId);
+    this.setState({
+      activePage,
+    });
+  }
+
+  getActivePage(btnId) {
+    if (Number.isInteger(Number(btnId))) {
+      return Number(btnId);
+    } else {
+      return this.state.activePage + (btnId === 'btnPrev' ? -1 : 1);
+    }
+  }
+
+  calculateFilteredArticles() {
+    const { selectedTopics } = this.state;
+    const { authorArticles } = this.props;
+    const filteredArticles = authorArticles.reduce((acc, cur) => {
+      if (selectedTopics.every((topic, idx) => {
+        return cur['topics'][idx] === topic;
+      })) {
+        acc.push(cur);
+      }
+      return acc;
+    }, []);
+    return filteredArticles;
+  }
+
+  calculateActiveArticles(filteredArticles) {
+    const { activePage } = this.state;
+    const { articlesPerPage } = paginationSetting;
+
+    // Filter active items for current page
+    const idxOfFirstArticle = (activePage - 1) * articlesPerPage;
+    const idxOfLastArticle = activePage * articlesPerPage;
+    const activeArticles = filteredArticles.slice(idxOfFirstArticle, idxOfLastArticle);
+
+    return activeArticles;
+  }
+
+  getDoughnutData() {
+    // FIXME: the labels displayed are not decided
+    const { authorArticles } = this.props;
+    const topics = authorArticles.reduce((acc, cur) => {
+      acc.push(cur['topics']);
+      return acc;
+    }, []);
+    const { topicLevel, selectedTopics } = this.state;
+    const curTopics = _.countBy(
+      (
+        topics.filter((topic, idx) => {
+          return selectedTopics.every((selectedTopic, idx) => {
+            return topic[idx] === selectedTopic;
+          });
+        })
+      ),
+      (topic => topic[Math.min(2, topicLevel)])
+    );
+
+    const labels = Object.keys(curTopics);
+    const counts = Object.values(curTopics);
+
+    return { labels, counts };
+  }
+
+  handleDoughnutClick(topic) {
+    let { topicLevel, selectedTopics } = this.state;
+    if (topic === '' && selectedTopics.length > 0) {
+      topicLevel = topicLevel - 1;
+      selectedTopics.pop();
+    } else if (topic !== '' && selectedTopics.length < 3) {
+      topicLevel = topicLevel + 1;
+      selectedTopics.push(topic);
+    }
+
+    this.setState({
+      topicLevel,
+      selectedTopics,
+      activePage: 1,
+    });
+  }
+
   render() {
+    const { authorArticles } = this.props;
+    if (_.isEmpty(authorArticles)) {
+      return <div>Loading</div>;
+    }
+
+    const filteredArticles = this.calculateFilteredArticles();
+    const activeArticles = this.calculateActiveArticles(filteredArticles);
+
+    const { activePage, selectedTopics } = this.state;
+    const { articlesPerPage, pageNumberBound } = paginationSetting;
+    const { labels, counts } = this.getDoughnutData();
+    const topic = _.last(selectedTopics);
+
     return (
       <div className="container border border-primary mb-2">
         <div className="row justify-content-md-around m-2">
+          {/* This part only show topics with  article number not 0*/}
           <div className="col-md-4 border border-success">
-            <TopicDoughnut authorTopics={authorTopics} />
+            <TopicDoughnut 
+              counts={counts}
+              labels={labels}
+              topic={topic}
+              onClick={(topic) => this.handleDoughnutClick(topic)}
+            />
           </div>
-
-          {/* TODO: move child state up */}
-          {/* TODO: move pagination nav up and keep it displayed in the bottom */}
           <div className="col-md-7 border border-success">
-            <ArticleList activeTopics={activeTopics} authorArticles={authorArticles} />
+            <ArticleList activeArticles={activeArticles} />
+            <Pagination
+              filteredArticles={filteredArticles}
+              activePage={activePage}
+              articlesPerPage={articlesPerPage}
+              pageNumberBound={pageNumberBound}
+              onClick = {(event) => this.handleClick(event)}
+            />
           </div>
         </div>
       </div>
@@ -121,4 +158,10 @@ class AuthorTopics extends Component {
   }
 }
 
-export default AuthorTopics;
+function mapStateToProps(state) {
+  return {
+    authorArticles: state.authorArticles,
+  };
+}
+
+export default connect(mapStateToProps, { getAuthorArticles })(AuthorTopics);

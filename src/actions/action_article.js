@@ -258,6 +258,7 @@ const dataObj = _.mapKeys(dataArray, 'id');
 
 export const GET_ARTICLE = 'get_article';
 export const LIST_ARTICLE = 'list_article';
+export const GET_AUTHOR_ARTICLES = 'get_author_articles';
 
 export function getArticle(id) {
   return {
@@ -270,5 +271,16 @@ export function listArticle() {
   return {
     type: LIST_ARTICLE,
     payload: dataArray,
+  };
+};
+
+export function getAuthorArticles(authorId) {
+  const authorArticles = _.filter(dataArray, (article) => {
+    return article.author.id === authorId;
+  });
+
+  return {
+    type: GET_AUTHOR_ARTICLES,
+    payload: authorArticles,
   };
 };
