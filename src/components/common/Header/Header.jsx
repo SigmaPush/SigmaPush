@@ -8,12 +8,15 @@ class Header extends Component {
     this.onSearchFocus = this.onSearchFocus.bind(this);
     this.onSearchBlur = this.onSearchBlur.bind(this);
   }
+  
   onSearchFocus() {
     this.toggleBtn.click();
   }
+  
   onSearchBlur() {
     this.toggleBtn.click();
   }
+  
   render() {
     return (
       <header>
