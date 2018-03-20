@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class AuthorListItem extends Component {
   render() {
@@ -10,7 +10,11 @@ class AuthorListItem extends Component {
         <div className="row no-gutters">
           <div className="col-md-3 p-2">
             <Link to={authorUrl}>
-              <img className="rounded-circle img-fluid" src={item.avatar} alt="avatar" />
+              <img
+                className="rounded-circle img-fluid"
+                src={item.avatar}
+                alt="avatar"
+              />
             </Link>
           </div>
           <div className="col-md-9 p-1">
@@ -21,19 +25,38 @@ class AuthorListItem extends Component {
                 </Link>
               </div>
               <div className="col-5 text-right">
-                <a href="" target="_self" aria-hidden="true" className="text-secondary">
-                  <small><span className="oi oi-plus"></span>&nbsp;<span className="font-weight-bold">Subscribe</span></small>
+                <a
+                  href=""
+                  target="_self"
+                  aria-hidden="true"
+                  className="text-secondary"
+                >
+                  <small>
+                    <span className="oi oi-plus" />&nbsp;<span className="font-weight-bold">
+                      Subscribe
+                    </span>
+                  </small>
                 </a>
               </div>
             </div>
             <div className="row font-weight-bold">
               <div className="col">
-                <a href="" target="_self" aria-hidden="true" className="text-secondary">
+                <a
+                  href=""
+                  target="_self"
+                  aria-hidden="true"
+                  className="text-secondary"
+                >
                   <small>{item.stats.numOfSub} subscribers</small>
                 </a>
               </div>
               <div className="col-5">
-                <a href="" target="_self" aria-hidden="true" className="text-secondary">
+                <a
+                  href=""
+                  target="_self"
+                  aria-hidden="true"
+                  className="text-secondary"
+                >
                   <small>{item.stats.numOfPush} push</small>
                 </a>
               </div>

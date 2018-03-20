@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class GridCard extends Component {
   constructor(props) {
@@ -7,6 +7,7 @@ class GridCard extends Component {
     this.data = props.data;
     this.url = props.url;
   }
+  
   render() {
     const articleUrl = `${this.url}${this.data.id}`;
     return (
@@ -19,9 +20,7 @@ class GridCard extends Component {
           </div>
           <div className="grid-list-item-card-body">
             <Link to={articleUrl} target="_self" aria-hidden="true">
-              <h6 className="grid-list-item-card-title">
-                {this.data.title}
-              </h6>
+              <h6 className="grid-list-item-card-title">{this.data.title}</h6>
             </Link>
             <div className="grid-list-item-card-author">
               {this.data.author.name}

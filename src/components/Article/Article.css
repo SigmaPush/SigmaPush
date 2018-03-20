@@ -4,48 +4,41 @@ body {
   min-width: 15rem;
   position: relative;
 }
-.tab-content{
+.tab-content {
   min-height: 20rem;
 }
 
-.article-content{
+.article-content {
   margin-left: auto;
   margin-right: auto;
-  max-width: 800px;
+  max-width: 740px;
   padding-left: 20px;
   padding-right: 20px;
-  word-wrap: break-word;
 }
 
-.article-content-title{
+.article-content-title {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
 }
 
-.article-reference{
+.article-reference {
   margin-left: auto;
   margin-right: auto;
-  max-width: 800px;
+  max-width: 740px;
   padding-left: 20px;
   padding-right: 20px;
 }
 
-.author-info{
-  left: 50px;
-  padding-left: 50px;
-  padding-right: 20px;
-  position: absolute;
-  top: 200px;
-  display: inline-flex;
-  float: left;
-  width: 200px;
+.author-info {
+  margin-left: auto;
+  margin-right: auto;
+  top: 10%;
+  position: relative;
+  max-width: 200px;
 }
 
-.btn-group-vertical{
-  display: inline-flex;
-  position: fixed;
-  top:10%;
-  margin-left:800px;
-  top: 200px;
+.btn-group-vertical {
+  position: sticky;
+  top: 30%;
 }
