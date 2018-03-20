@@ -8,10 +8,12 @@ class GridList extends Component {
     super(props);
     this.title = props.title;
     this.url = props.url;
+    
     // containerWidh: 9, 10, 12 conresponsing to bootstrap col
     this.containerWidth = props.containerWidth;
     this.itemWidth = props.itemWidth ? props.itemWidth : 214;
     this.items = props.items;
+    
     // mode: table, slider
     this.mode = props.mode ? props.mode : "slider";
 
@@ -30,6 +32,7 @@ class GridList extends Component {
     this.renderActionButtons = this.renderActionButtons.bind(this);
     this.calculateWith = this.calculateWith.bind(this);
   }
+  
   getStyleObj() {
     const isShowAll = this.state && this.state.isShowAll;
     return {
@@ -37,6 +40,7 @@ class GridList extends Component {
       height: isShowAll ? "auto" : "245px",
     };
   }
+  
   onClickPre(event) {
     if (this.xOffset >= 0) return;
     this.xOffset += this.itemWidth;
@@ -48,6 +52,7 @@ class GridList extends Component {
       isShowNextBtn: hasNext,
     });
   }
+  
   onClickNext(event) {
     const outerWidth = this.listWrapper.clientWidth;
     if (this.maxWith + this.xOffset <= outerWidth) return;
@@ -59,6 +64,7 @@ class GridList extends Component {
       isShowNextBtn: hasNext,
     });
   }
+  
   onToggleShow(event) {
     let { isShowAll } = this.state;
     isShowAll = !isShowAll;
@@ -68,6 +74,7 @@ class GridList extends Component {
       style: style,
     });
   }
+  
   renderActionButtons() {
     const { isShowAll, isShowPreBtn, isShowNextBtn } = this.state;
     if (this.mode === 'slider') {
@@ -95,9 +102,11 @@ class GridList extends Component {
       );
     }
   }
+  
   calculateWith(numOfItems) {
     this.maxWith = numOfItems * this.itemWidth;
   }
+  
   render() {
     const listClass = `grid-list grid-list-${this.containerWidth} grid-list-${this.mode}`;
     const { items } = this.props;
@@ -109,6 +118,7 @@ class GridList extends Component {
         </div>
       );
     });
+    
     return (
       <div className={listClass} ref={(dom) => { this.listWrapper = dom; }}>
         <h5>{this.title}</h5>
