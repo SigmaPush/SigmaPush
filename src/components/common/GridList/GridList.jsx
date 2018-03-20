@@ -14,7 +14,7 @@ class GridList extends Component {
     this.items = props.items;
     // mode: table, slider
     this.mode = props.mode ? props.mode : "slider";
-    
+
     this.xOffset = 0;
     this.maxWith = 0;
     this.state = {
@@ -26,12 +26,12 @@ class GridList extends Component {
     this.getStyleObj = this.getStyleObj.bind(this);
     this.onClickPre = this.onClickPre.bind(this);
     this.onClickNext = this.onClickNext.bind(this);
-    this.onToggerShow = this.onToggerShow.bind(this);
-    this.ActionButtons = this.ActionButtons.bind(this);
+    this.onToggleShow = this.onToggleShow.bind(this);
+    this.renderActionButtons = this.renderActionButtons.bind(this);
     this.calculateWith = this.calculateWith.bind(this);
   }
   getStyleObj() {
-    const isShowAll = this.state && this.state.isShowAll ;
+    const isShowAll = this.state && this.state.isShowAll;
     return {
       transform: `translateX(${this.xOffset}px)`,
       height: isShowAll ? "auto" : "245px",
@@ -59,7 +59,7 @@ class GridList extends Component {
       isShowNextBtn: hasNext,
     });
   }
-  onToggerShow(event) {
+  onToggleShow(event) {
     let { isShowAll } = this.state;
     isShowAll = !isShowAll;
     const style = this.getStyleObj();
@@ -68,7 +68,7 @@ class GridList extends Component {
       style: style,
     });
   }
-  ActionButtons() {
+  renderActionButtons() {
     const { isShowAll, isShowPreBtn, isShowNextBtn } = this.state;
     if (this.mode === 'slider') {
       return (
@@ -105,7 +105,7 @@ class GridList extends Component {
     const renderList = _.map(items, item => {
       return (
         <div className="grid-list-item" key={item.id} style={{ width: this.itemWidth }}>
-          <GridCard data={item} url={this.url}/>
+          <GridCard data={item} url={this.url} />
         </div>
       );
     });
@@ -117,7 +117,7 @@ class GridList extends Component {
             {renderList}
           </div>
         </div>
-        {this.ActionButtons()}
+        {this.renderActionButtons()}
         <div className="grid-list-bottom-line" />
       </div>
     );
