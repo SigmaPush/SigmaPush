@@ -8,10 +8,12 @@ class GridList extends Component {
     super(props);
     this.title = props.title;
     this.url = props.url;
+    
     // containerWidh: 9, 10, 12 conresponsing to bootstrap col
     this.containerWidth = props.containerWidth;
     this.itemWidth = props.itemWidth ? props.itemWidth : 214;
     this.items = props.items;
+    
     // mode: table, slider
     this.mode = props.mode ? props.mode : "slider";
 
@@ -26,8 +28,8 @@ class GridList extends Component {
     this.getStyleObj = this.getStyleObj.bind(this);
     this.onClickPre = this.onClickPre.bind(this);
     this.onClickNext = this.onClickNext.bind(this);
-    this.onToggerShow = this.onToggerShow.bind(this);
-    this.ActionButtons = this.ActionButtons.bind(this);
+    this.onToggleShow = this.onToggleShow.bind(this);
+    this.renderActionButtons = this.renderActionButtons.bind(this);
     this.calculateWith = this.calculateWith.bind(this);
   }
 
@@ -63,7 +65,7 @@ class GridList extends Component {
     });
   }
 
-  onToggerShow(event) {
+  onToggleShow(event) {
     let { isShowAll } = this.state;
     isShowAll = !isShowAll;
     const style = this.getStyleObj();
@@ -72,8 +74,8 @@ class GridList extends Component {
       style: style
     });
   }
-
-  ActionButtons() {
+  
+  renderActionButtons() {
     const { isShowAll, isShowPreBtn, isShowNextBtn } = this.state;
     if (this.mode === "slider") {
       return (
@@ -114,11 +116,11 @@ class GridList extends Component {
       );
     }
   }
-
+  
   calculateWith(numOfItems) {
     this.maxWith = numOfItems * this.itemWidth;
   }
-
+  
   render() {
     const listClass = `grid-list grid-list-${this.containerWidth} grid-list-${
       this.mode
@@ -150,7 +152,7 @@ class GridList extends Component {
             {renderList}
           </div>
         </div>
-        {this.ActionButtons()}
+        {this.renderActionButtons()}
         <div className="grid-list-bottom-line" />
       </div>
     );

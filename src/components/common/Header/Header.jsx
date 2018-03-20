@@ -1,5 +1,6 @@
-import React, { Component } from "react";
-import SearchFilter from "./SearchFilter";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import SearchFilter from './SearchFilter';
 
 class Header extends Component {
   constructor(props) {
@@ -7,11 +8,11 @@ class Header extends Component {
     this.onSearchFocus = this.onSearchFocus.bind(this);
     this.onSearchBlur = this.onSearchBlur.bind(this);
   }
-
+  
   onSearchFocus() {
     this.toggleBtn.click();
   }
-
+  
   onSearchBlur() {
     this.toggleBtn.click();
   }
@@ -20,21 +21,13 @@ class Header extends Component {
     return (
       <header>
         <nav className="navbar navbar-expand-md navbar-light bg-light fixed-top ">
-          <a className="navbar-brand" href="">
-            &Sigma;p
-          </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarCollapse"
-            aria-controls="navbarCollapse"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div className="collapse navbar-collapse" id="headerNavbarCollapse">
+          <Link to="/">
+            <a className="navbar-brand" >&Sigma;p</a>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+          </Link>
+          <div className="collapse navbar-collapse" id="navbarCollapse">
             <form className="form-inline mt-2 mt-md-0 mr-auto">
               <div className="input-group">
                 <input
@@ -77,18 +70,9 @@ class Header extends Component {
             </ul>
           </div>
         </nav>
-        <div className="collapse" id="collapseExample">
-          <button
-            ref={dom => {
-              this.toggleBtn = dom;
-            }}
-            className="d-none"
-            type="button"
-            data-toggle="collapse"
-            data-target="#collapseExample"
-            aria-expanded="false"
-            aria-controls="collapseExample"
-          />
+        <div className="collapse" id="collapseFilter">
+          <button ref={(dom) => { this.toggleBtn = dom; }} className="d-none" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" >
+          </button>
           <SearchFilter />
         </div>
       </header>

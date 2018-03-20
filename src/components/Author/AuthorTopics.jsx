@@ -6,7 +6,7 @@ import TopicDoughnut from './TopicDoughnut';
 import ArticleList from './ArticleList';
 import Pagination from './Pagination';
 
-import { getAuthorArticles } from '../../actions/action_article';
+import { listArticle } from '../../actions/action_article';
 
 const paginationSetting = {
   articlesPerPage: 2,
@@ -29,7 +29,7 @@ class AuthorTopics extends Component {
 
   componentDidMount() {
     const { authorId } = this.props;
-    this.props.getAuthorArticles(authorId);
+    this.props.listArticle(authorId);
   }
 
   handleClick(event) {
@@ -51,7 +51,7 @@ class AuthorTopics extends Component {
   calculateFilteredArticles() {
     const { selectedTopics } = this.state;
     const { authorArticles } = this.props;
-    const filteredArticles = authorArticles.reduce((acc, cur) => {
+    const filteredArticles = _.values(authorArticles).reduce((acc, cur) => {
       if (selectedTopics.every((topic, idx) => {
         return cur['topics'][idx] === topic;
       })) {
@@ -77,7 +77,7 @@ class AuthorTopics extends Component {
   getDoughnutData() {
     // FIXME: the labels displayed are not decided
     const { authorArticles } = this.props;
-    const topics = authorArticles.reduce((acc, cur) => {
+    const topics = _.values(authorArticles).reduce((acc, cur) => {
       acc.push(cur['topics']);
       return acc;
     }, []);
@@ -160,8 +160,8 @@ class AuthorTopics extends Component {
 
 function mapStateToProps(state) {
   return {
-    authorArticles: state.authorArticles,
+    authorArticles: state.articles,
   };
 }
 
-export default connect(mapStateToProps, { getAuthorArticles })(AuthorTopics);
+export default connect(mapStateToProps, { listArticle })(AuthorTopics);
