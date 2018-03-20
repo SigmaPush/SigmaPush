@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import _ from 'lodash';
-import { listAuthor } from '../../actions/action_author';
-import AuthorListItem from './AuthorListItem';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import _ from "lodash";
+import { listAuthor } from "../../actions/action_author";
+import AuthorListItem from "./AuthorListItem";
 
 class AuthorList extends Component {
   componentDidMount() {
@@ -30,7 +30,7 @@ class AuthorList extends Component {
 function mapStateToProps(state) {
   return {
     items: state.authors
-  }
+  };
 }
 
 export default connect(mapStateToProps, { listAuthor })(AuthorList);

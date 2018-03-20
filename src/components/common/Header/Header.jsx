@@ -39,24 +39,33 @@ class Header extends Component {
                   onBlur={this.onSearchBlur}
                 />
                 <div className="input-group-append">
-                  <button className="btn btn-outline-secondary" type="button" >
-                    <span className="oi oi-magnifying-glass"></span>
+                  <button className="btn btn-outline-secondary" type="button">
+                    <span className="oi oi-magnifying-glass" />
                   </button>
                 </div>
               </div>
             </form>
             <ul className="navbar-nav mr-0">
               <li className="nav-item">
-                <a className="nav-link" href="">Articles</a>
+                <a className="nav-link" href="">
+                  Articles
+                </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="">Discuss</a>
+                <a className="nav-link" href="">
+                  Discuss
+                </a>
               </li>
               <li className="nav-item d-none d-md-block">
-                <a className="nav-link" href=""> | </a>
+                <a className="nav-link" href="">
+                  {" "}
+                  |{" "}
+                </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href=""><span className="oi oi-person"></span></a>
+                <a className="nav-link" href="">
+                  <span className="oi oi-person" />
+                </a>
               </li>
             </ul>
           </div>

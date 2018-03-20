@@ -1,19 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getArticle } from '../../actions/action_article';
+
+import { getArticle } from "../../actions/action_article";
+
 import ArticleContent from "./ArticleContent";
 import RelatedArticles from "./RelatedArticles";
-import AuthorInfo from "./AuthorInfo"
+import AuthorInfo from "./AuthorInfo";
 import References from "./References";
-import Header from '../common/Header';
-import Footer from '../common/Footer';
-
+import Toolbar from "./ToolBar";
+import Header from "../common/Header";
+import Footer from "../common/Footer";
 
 class Article extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.getArticle(id);
   }
+
   render() {
     const { article } = this.props;
     if (!article) {
@@ -22,12 +25,23 @@ class Article extends Component {
     return (
       <div>
         <Header />
-        <div>
-          <AuthorInfo className="author-info" data={article.author}/>
-          <ArticleContent data={article}/>
+        <div className="row">
+          <div className="col-3">
+            <AuthorInfo className="author-info" data={article.author} />
+          </div>
+          <div className="col-6">
+            <ArticleContent data={article} />
+          </div>
+          <div className="col-3">
+            <Toolbar className="toolbarbox" />
+          </div>
         </div>
         <div className="container border">
-          <RelatedArticles title="Popular Articles" containerWidth="9" url="/Article/" />
+          <RelatedArticles
+            title="Popular Articles"
+            containerWidth="9"
+            url="/Article/"
+          />
         </div>
         <div className="container p-3">
           <References />
@@ -39,8 +53,9 @@ class Article extends Component {
 }
 
 function mapStateToProps({ articles }, ownProps) {
-  return { article: articles[ownProps.match.params.id] };
+  return {
+    article: articles[ownProps.match.params.id]
+  };
 }
 
 export default connect(mapStateToProps, { getArticle })(Article);
-
