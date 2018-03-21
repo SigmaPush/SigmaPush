@@ -7,14 +7,11 @@ class CatalogRadar extends Component {
     this.initializeChart(this.props);
   }
 
-  initializeChart({ allCatalogs, catalogs, option }) {
-    let activeLabels = [];
-    let activeData = [];
+  initializeChart({ labels, counts, allCatalogs, showAllCat }) {
+    let activeLabels = labels;
+    let activeData = counts;
 
-    activeLabels = [...Object.keys(catalogs)];
-    activeData = [...Object.values(catalogs)];
-
-    if (option) {
+    if (showAllCat) {
       allCatalogs.map((catalog) => {
         if (!activeLabels.includes(catalog)) {
           activeLabels.push(catalog);

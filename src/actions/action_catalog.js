@@ -15,6 +15,14 @@ const dataArray = [
     id: 'cat4',
     name: 'Network',
   },
+  {
+    id: 'cat5',
+    name: 'Data Science',
+  },
+  {
+    id: 'cat6',
+    name: 'Math',
+  },
 ];
 
 export const LIST_CATALOG = 'list_catalog';

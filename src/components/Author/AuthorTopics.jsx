@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import _ from 'lodash';
 
 import TopicDoughnut from './TopicDoughnut';
 import ArticleList from './ArticleList';
 import Pagination from './Pagination';
 
-import { listArticle } from '../../actions/action_article';
 
 const paginationSetting = {
   articlesPerPage: 2,
@@ -27,14 +25,10 @@ class AuthorTopics extends Component {
     this.handleDoughnutClick = this.handleDoughnutClick.bind(this);
   }
 
-  componentDidMount() {
-    const { authorId } = this.props;
-    this.props.listArticle(authorId);
-  }
-
   handleClick(event) {
     const btnId = event.target.id;
     const activePage = this.getActivePage(btnId);
+
     this.setState({
       activePage,
     });
@@ -59,6 +53,7 @@ class AuthorTopics extends Component {
       }
       return acc;
     }, []);
+
     return filteredArticles;
   }
 
@@ -93,8 +88,8 @@ class AuthorTopics extends Component {
       (topic => topic[Math.min(2, topicLevel)])
     );
 
-    const labels = Object.keys(curTopics);
-    const counts = Object.values(curTopics);
+    const labels = _.keys(curTopics);
+    const counts = _.values(curTopics);
 
     return { labels, counts };
   }
@@ -158,10 +153,4 @@ class AuthorTopics extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    authorArticles: state.articles,
-  };
-}
-
-export default connect(mapStateToProps, { listArticle })(AuthorTopics);
+export default AuthorTopics;
