@@ -6,7 +6,7 @@ export default class References extends Component {
     return (
       <div className="border article-reference">
         <ul className="nav nav-tabs" id="myTab" role="tablist">
-          <li className="nav-item">
+          <li className="nav-item form-group">
             <a
               className="nav-link active"
               id="home-tab"
@@ -53,7 +53,14 @@ export default class References extends Component {
             role="tabpanel"
             aria-labelledby="comment-tab"
           >
-            This is something related to comment
+            <textarea
+              className="form-control"
+              id="exampleFormControlTextarea1"
+              rows="3"
+            />
+            <button type="submit" class="btn btn-primary">
+              Submit
+            </button>
           </div>
           <div
             className="tab-pane fade"
