@@ -3,11 +3,27 @@ import ReactDOM from 'react-dom';
 import Chart from 'chart.js';
 
 class CatalogRadar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      chart: null,
+    };
+  }
+
   componentDidMount() {
     this.initializeChart(this.props);
   }
 
-  initializeChart({ labels, counts, allCatalogs, showAllCat }) {
+  componentDidUpdate() {
+    let { chart } = this.state;
+    const { activeLabels, activeData } = this.getChartData(this.props);
+    chart.data.labels = activeLabels;
+    chart.data.datasets[0].data = activeData;
+    chart.update();
+  }
+
+  getChartData({ labels, counts, allCatalogs, showAllCat }) {
     let activeLabels = labels;
     let activeData = counts;
 
@@ -21,6 +37,11 @@ class CatalogRadar extends Component {
       });
     }
 
+    return { activeLabels, activeData};
+  }
+
+  initializeChart(props) {
+    const { activeLabels, activeData } = this.getChartData(props);
     const data = {
       labels: activeLabels,
       datasets:[
@@ -38,7 +59,7 @@ class CatalogRadar extends Component {
     };
   
     const ctx = ReactDOM.findDOMNode(this.refs.chart).getContext("2d");
-    new Chart(ctx, {
+    let radar = new Chart(ctx, {
       type: 'radar',
       data: data,
       options: {
@@ -47,11 +68,15 @@ class CatalogRadar extends Component {
         }
       },
     });
+
+    this.setState({
+      chart: radar,
+    });
   }
 
   render () {
     // FIXME:ref should be changed to callback version as recommended
-    return (<canvas className="border border-warning m-1" ref="chart" height="300px" />);
+    return (<canvas className="border border-warning m-1" ref="chart" height="200px" />);
   }
 }
 
