@@ -18,17 +18,30 @@ export default class ArticleContent extends Component {
     return (
       <div className="article-content">
         <h1 className="article-content-title">{data.title}</h1>
-        <nav id="content" className="navbar navbar-light bg-light">
-          <ul className="nav nav-pills">
-            <a
-              className="nav-link text-white bg-primary"
-              key={data.cat.id}
-              href=""
+        <nav className="navbar navbar-expand-xl justify-content-between">
+          <a
+            className="nav-link text-white bg-primary"
+            key={data.cat.id}
+            href=""
+          >
+            {data.cat.name}
+          </a>
+          <nav className="">
+            <button
+              className="navbar-toggler navbar-light"
+              type="button"
+              data-toggle="collapse"
+              data-target="#tagMenu"
+              aria-controls="tagMenu"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
             >
-              {data.cat.name}
-            </a>
-          </ul>
-          <ul className="nav nav-pills">{tagList}</ul>
+              <span className="navbar-toggler-icon" />
+            </button>
+            <div className="collapse navbar-collapse my-lg-0" id="tagMenu">
+              <ul className="navbar-nav mr-auto">{tagList}</ul>
+            </div>
+          </nav>
         </nav>
         <div data-spy="scroll" data-target="#content" data-offset="0">
           <img
@@ -91,6 +104,20 @@ export default class ArticleContent extends Component {
               aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh
               artisan ullamco consequat.
             </p>
+          </div>
+          <div className="btn-group btn-group-lg d-flex justify-content-center">
+            <button type="button" className="btn btn-info">
+              Like
+            </button>
+            <button type="button" className="btn btn-info">
+              Share
+            </button>
+            <button type="button" className="btn btn-info">
+              Fav
+            </button>
+            <button type="button" className="btn btn-info">
+              Comm
+            </button>
           </div>
         </div>
       </div>

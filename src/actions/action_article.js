@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-let dataArray = [
+const dataArray = [
   {
     id: 'article_1',
     author: {
@@ -274,9 +274,9 @@ function filterAuthorArticles(authorId) {
 }
 
 export function listArticle(authorId = null) {
-  let res = dataArray
+  let res = dataArray;
   if (authorId !== null) {
-    dataArray = filterAuthorArticles(authorId);
+    res = filterAuthorArticles(authorId);
   }
 
   return {

@@ -112,11 +112,6 @@ class AuthorTopics extends Component {
   }
 
   render() {
-    const { authorArticles } = this.props;
-    if (_.isEmpty(authorArticles)) {
-      return <div>Loading</div>;
-    }
-
     const filteredArticles = this.calculateFilteredArticles();
     const activeArticles = this.calculateActiveArticles(filteredArticles);
 
@@ -126,7 +121,7 @@ class AuthorTopics extends Component {
     const topic = _.last(selectedTopics);
 
     return (
-      <div className="container border border-primary mb-2">
+      <div className="container border border-primary my-5">
         <div className="row justify-content-md-around m-2">
           {/* This part only show topics with  article number not 0*/}
           <div className="col-md-4 border border-success">
