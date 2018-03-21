@@ -58,7 +58,7 @@ export default class References extends Component {
               id="exampleFormControlTextarea1"
               rows="3"
             />
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" className="btn btn-primary">
               Submit
             </button>
           </div>
