@@ -274,12 +274,13 @@ function filterAuthorArticles(authorId) {
 }
 
 export function listArticle(authorId = null) {
+  let res = dataArray
   if (authorId !== null) {
     dataArray = filterAuthorArticles(authorId);
   }
 
   return {
     type: LIST_ARTICLE,
-    payload: dataArray,
+    payload: res,
   };
 };
