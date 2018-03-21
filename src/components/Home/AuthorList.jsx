@@ -8,6 +8,7 @@ class AuthorList extends Component {
   componentDidMount() {
     this.props.listAuthor();
   }
+  
   render() {
     const renderList = _.map(this.props.items, item => {
       return (
