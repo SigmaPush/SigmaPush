@@ -21,12 +21,10 @@ class Header extends Component {
     return (
       <header>
         <nav className="navbar navbar-expand-md navbar-light bg-light fixed-top ">
-          <Link to="/">
-            <a className="navbar-brand" >&Sigma;p</a>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <Link className="navbar-brand" to="/">&Sigma;p</Link>
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
-            </button>
-          </Link>
+          </button>
           <div className="collapse navbar-collapse" id="navbarCollapse">
             <form className="form-inline mt-2 mt-md-0 mr-auto">
               <div className="input-group">
