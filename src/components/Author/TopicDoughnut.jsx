@@ -5,8 +5,25 @@ import Chart from 'chart.js';
 const bgColor = ['#FF6384','#36A2EB','#FFCE56','#FFFFFF',];
 
 class TopicDoughnut extends Component {
+  constructor(props) {
+    super(props);
+
+    this.setState({
+      chart: null,
+    });
+  }
+
   componentDidMount() {
     this.initializeChart(this.props);
+  }
+
+  componentDidUpdate() {
+    let { chart } = this.state;
+    const { labels, counts } = this.props;
+
+    chart.data.labels = labels;
+    chart.data.datasets[0].data = counts;
+    chart.update();
   }
 
   initializeChart({ labels, counts, topic }) {
@@ -101,6 +118,10 @@ class TopicDoughnut extends Component {
           }
         },
       ],
+    });
+
+    this.setState({
+      chart: doughnut,
     });
   }
 
