@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 
 import TopicDoughnut from './TopicDoughnut';
-// import ArticleList from './ArticleList';
 import ItemPagination from '../common/ItemPagination';
 
 
