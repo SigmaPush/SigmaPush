@@ -12,8 +12,8 @@ class Pagination extends Component {
   }
 
   calculatePageBounds() {
-    const { activePage, pageNumberBound, filteredArticles, articlesPerPage } = this.props;
-    const pageNumberLimit = Math.ceil(filteredArticles.length / articlesPerPage);
+    const { activePage, pageNumberBound, filteredItems, itemsPerPage } = this.props;
+    const pageNumberLimit = Math.ceil(filteredItems.length / itemsPerPage);
     const pageLowerBound = Math.max(0, Math.min(pageNumberLimit - pageNumberBound, activePage - Math.floor(pageNumberBound / 2) - 1));
     const pageUpperBound = Math.min(pageNumberLimit, pageLowerBound + pageNumberBound);
 
@@ -21,7 +21,7 @@ class Pagination extends Component {
   }
 
   getPrevAndNextClass() {
-    const { activePage, filteredArticles, articlesPerPage } = this.props;
+    const { activePage, filteredItems, itemsPerPage } = this.props;
 
     let isPrevActive = true;
     let isNextActive = true;
@@ -30,7 +30,7 @@ class Pagination extends Component {
       isPrevActive = false;
     }
 
-    if (activePage === Math.ceil(filteredArticles.length / articlesPerPage)) {
+    if (activePage === Math.ceil(filteredItems.length / itemsPerPage)) {
       isNextActive = false;
     }
 
@@ -38,10 +38,10 @@ class Pagination extends Component {
   }
 
   calculatePageNumbers(pageLowerBound, pageUpperBound) {
-    const { filteredArticles, activePage, articlesPerPage } = this.props;
+    const { filteredItems, activePage, itemsPerPage } = this.props;
 
     // Calculate current page numbers
-    const pages = [...Array(Math.ceil(filteredArticles.length / articlesPerPage) + 1).keys()];
+    const pages = [...Array(Math.ceil(filteredItems.length / itemsPerPage) + 1).keys()];
     const pageNumbers = pages.filter(number => {
       return number > pageLowerBound && number <= pageUpperBound;
     }).map(number => {

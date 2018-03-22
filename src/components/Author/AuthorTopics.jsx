@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 
 import TopicDoughnut from './TopicDoughnut';
-import ArticleList from './ArticleList';
-import Pagination from './Pagination';
+// import ArticleList from './ArticleList';
+import ItemPagination from '../common/ItemPagination';
 
 
 const paginationSetting = {
@@ -133,11 +133,11 @@ class AuthorTopics extends Component {
             />
           </div>
           <div className="col-md-7 border border-success">
-            <ArticleList activeArticles={activeArticles} />
-            <Pagination
-              filteredArticles={filteredArticles}
+            <ItemPagination
+              activeItems={activeArticles}
+              filteredItems={filteredArticles}
               activePage={activePage}
-              articlesPerPage={articlesPerPage}
+              itemsPerPage={articlesPerPage}
               pageNumberBound={pageNumberBound}
               onClick = {(event) => this.handleClick(event)}
             />
