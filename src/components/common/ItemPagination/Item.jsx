@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ArticleItem(props) {
+function Item(props) {
   const { id, title, thumbnail, description } = props.article;
   const url = `/article/${id}`;
 
@@ -17,4 +17,4 @@ function ArticleItem(props) {
   );
 }
 
-export default ArticleItem;
+export default Item;

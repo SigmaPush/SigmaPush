@@ -8,9 +8,9 @@ class TopicDoughnut extends Component {
   constructor(props) {
     super(props);
 
-    this.setState({
+    this.state = {
       chart: null,
-    });
+    };
   }
 
   componentDidMount() {
