@@ -24,6 +24,7 @@
     "express": "^4.16.3"
   },
   "devDependencies": {
+    "create-esm": "^1.0.5",
     "nodemon": "^1.17.3"
   }
 }

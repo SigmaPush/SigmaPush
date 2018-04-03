@@ -1,5 +1,2 @@
-const app = require('./server/server');
-
-const port = 5000;
-
-app.listen(port, () => console.log(`Server running on port ${port}`));
+require = require("esm")(module/*, options*/)
+module.exports = require("./server/server.js").default
